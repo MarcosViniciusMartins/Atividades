@@ -1,0 +1,315 @@
+questao 1 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.print("Digite uma nota entre zero e dez: ");
+            double nota = scanner.nextDouble();
+            
+            if (nota >= 0 && nota <= 10) {
+                System.out.println("Nota válida: " + nota);
+                break;
+            } else {
+                System.out.println("Nota inválida. Por favor, digite uma nota entre zero e dez.");
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+questao 2
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.print("Digite o nome de usuário: ");
+            String nomeUsuario = scanner.nextLine();
+            
+            System.out.print("Digite a senha: ");
+            String senha = scanner.nextLine();
+            
+            if (senha.equals(nomeUsuario)) {
+                System.out.println("Erro: A senha não pode ser igual ao nome de usuário. Por favor, tente novamente.\n");
+            } else {
+                System.out.println("Cadastro realizado com sucesso!\nNome de usuário: " + nomeUsuario + "\nSenha: " + senha);
+                break;
+            }
+        }
+        
+        scanner.close();
+    }
+}
+
+questao 3
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Validação do nome
+        String nome;
+        do {
+            System.out.print("Digite seu nome (maior que 3 caracteres): ");
+            nome = scanner.nextLine();
+        } while (nome.length() <= 3);
+        
+        // Validação da idade
+        int idade;
+        do {
+            System.out.print("Digite sua idade (entre 0 e 150): ");
+            idade = scanner.nextInt();
+        } while (idade < 0 || idade > 150);
+        
+        // Validação do salário
+        double salario;
+        do {
+            System.out.print("Digite seu salário (maior que zero): ");
+            salario = scanner.nextDouble();
+        } while (salario <= 0);
+        
+        // Validação do sexo
+        char sexo;
+        do {
+            System.out.print("Digite seu sexo ('f' ou 'm'): ");
+            sexo = scanner.next().charAt(0);
+        } while (sexo != 'f' && sexo != 'm');
+        
+        // Validação do estado civil
+        char estadoCivil;
+        do {
+            System.out.print("Digite seu estado civil ('s', 'c', 'v', 'd'): ");
+            estadoCivil = scanner.next().charAt(0);
+        } while (estadoCivil != 's' && estadoCivil != 'c' && estadoCivil != 'v' && estadoCivil != 'd');
+        
+        // Exibindo os dados válidos
+        System.out.println("\nInformações cadastradas com sucesso:");
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+        System.out.println("Salário: " + salario);
+        System.out.println("Sexo: " + sexo);
+        System.out.println("Estado Civil: " + estadoCivil);
+        
+        scanner.close();
+    }
+}
+
+questao 4
+
+public class Main {
+    public static void main(String[] args) {
+        int populacaoA = 80000;
+        double taxaCrescimentoA = 0.03;
+        
+        int populacaoB = 200000;
+        double taxaCrescimentoB = 0.015;
+        
+        int anos = 0;
+        
+        // Loop para calcular o número de anos necessários
+        while (populacaoA <= populacaoB) {
+            populacaoA += (int) (populacaoA * taxaCrescimentoA);
+            populacaoB += (int) (populacaoB * taxaCrescimentoB);
+            anos++;
+        }
+        
+        // Exibindo o resultado
+        System.out.println("Número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B: " + anos);
+    }
+}
+
+questao 5 
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char continuar;
+        
+        do {
+            // Entrada das populações e taxas de crescimento
+            int populacaoA, populacaoB;
+            double taxaCrescimentoA, taxaCrescimentoB;
+            
+            // Validação das entradas de populações e taxas de crescimento
+            do {
+                System.out.println("Informe a população inicial do país A:");
+                populacaoA = scanner.nextInt();
+                if (populacaoA <= 0) {
+                    System.out.println("A população deve ser um valor positivo.");
+                }
+            } while (populacaoA <= 0);
+            
+            do {
+                System.out.println("Informe a população inicial do país B:");
+                populacaoB = scanner.nextInt();
+                if (populacaoB <= 0) {
+                    System.out.println("A população deve ser um valor positivo.");
+                }
+            } while (populacaoB <= 0);
+            
+            do {
+                System.out.println("Informe a taxa de crescimento anual do país A (em decimal):");
+                taxaCrescimentoA = scanner.nextDouble();
+                if (taxaCrescimentoA <= 0) {
+                    System.out.println("A taxa de crescimento deve ser um valor positivo.");
+                }
+            } while (taxaCrescimentoA <= 0);
+            
+            do {
+                System.out.println("Informe a taxa de crescimento anual do país B (em decimal):");
+                taxaCrescimentoB = scanner.nextDouble();
+                if (taxaCrescimentoB <= 0) {
+                    System.out.println("A taxa de crescimento deve ser um valor positivo.");
+                }
+            } while (taxaCrescimentoB <= 0);
+            
+            // Cálculo do número de anos necessários
+            int anos = 0;
+            while (populacaoA <= populacaoB) {
+                populacaoA += (int) (populacaoA * taxaCrescimentoA);
+                populacaoB += (int) (populacaoB * taxaCrescimentoB);
+                anos++;
+            }
+            
+            // Exibindo o resultado
+            System.out.println("Número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B: " + anos);
+            
+            // Verificar se o usuário deseja repetir a operação
+            System.out.println("\nDeseja repetir a operação? (s/n)");
+            continuar = scanner.next().charAt(0);
+        } while (continuar == 's' || continuar == 'S');
+        
+        scanner.close();
+    }
+}
+
+questao 6
+public class Main {
+    public static void main(String[] args) {
+        // Imprimindo os números um abaixo do outro
+        System.out.println("Números de 1 a 20 abaixo um do outro:");
+        for (int i = 1; i <= 20; i++) {
+            System.out.println(i);
+        }
+    }
+}
+
+questao 7
+
+public class Main {
+    public static void main(String[] args) {
+        // Imprimindo os números um ao lado do outro
+        System.out.println("Números de 1 a 20 ao lado um do outro:");
+        for (int i = 1; i <= 20; i++) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+questao 8 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Pedindo ao usuário para inserir os números
+        System.out.println("Digite cinco números:");
+        int maior = Integer.MIN_VALUE; // Inicializando com o menor valor possível de um inteiro
+        
+        for (int i = 0; i < 5; i++) {
+            int numero = scanner.nextInt();
+            if (numero > maior) {
+                maior = numero;
+            }
+        }
+        
+        // Exibindo o maior número
+        System.out.println("O maior número é: " + maior);
+        
+        scanner.close();
+    }
+}
+
+questao 9
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Pedindo ao usuário para inserir os números
+        System.out.println("Digite cinco números:");
+        
+        int soma = 0;
+        for (int i = 0; i < 5; i++) {
+            int numero = scanner.nextInt();
+            soma += numero; // Adicionando o número à soma
+        }
+        
+        // Calculando a média
+        double media = (double) soma / 5;
+        
+        // Exibindo a soma e a média
+        System.out.println("A soma dos números é: " + soma);
+        System.out.println("A média dos números é: " + media);
+        
+        scanner.close();
+    }
+}
+
+questao 10
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Números ímpares entre 1 e 50:");
+        
+        for (int i = 1; i <= 50; i++) {
+            // Verificando se o número é ímpar
+            if (i % 2 != 0) {
+                System.out.println(i);
+            }
+        }
+    }
+}
+
+questao 11
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Pedindo ao usuário para inserir dois números inteiros
+        System.out.print("Digite o primeiro número inteiro: ");
+        int numero1 = scanner.nextInt();
+        
+        System.out.print("Digite o segundo número inteiro: ");
+        int numero2 = scanner.nextInt();
+        
+        // Garantindo que o primeiro número seja menor que o segundo
+        if (numero1 > numero2) {
+            int temp = numero1;
+            numero1 = numero2;
+            numero2 = temp;
+        }
+        
+        // Gerando e imprimindo os números inteiros no intervalo entre os dois números
+        System.out.println("Números no intervalo entre " + numero1 + " e " + numero2 + ":");
+        for (int i = numero1; i <= numero2; i++) {
+            System.out.println(i);
+        }
+        
+        scanner.close();
+    }
+}
